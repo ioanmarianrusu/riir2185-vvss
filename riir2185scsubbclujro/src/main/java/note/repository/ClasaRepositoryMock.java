@@ -52,7 +52,7 @@ public class ClasaRepositoryMock implements ClasaRepository {
 	public List<Medie> calculeazaMedii() throws ClasaException {
 		// TODO Auto-generated method stub
 		List<Medie> medii = new LinkedList<Medie>();
-		if(clasa.size() >= 0) {
+		if(clasa.size() > 0) {
 			for(Elev elev : clasa.keySet()) {
 				Medie medie = new Medie();
 				medie.setElev(elev);
@@ -65,15 +65,14 @@ public class ClasaRepositoryMock implements ClasaRepository {
 					int nrNote = noteElev.size();
 					int i = 0;
 					double suma = 0;
-					if(nrNote >= 0) {
-						while(i < nrNote) {
-							double nota = noteElev.get(i);
-							suma += nota;
-							i++;
-						}
-						sumaMedii = sumaMedii + suma/i;
+					while(i < nrNote) {
+						double nota = noteElev.get(i);
+						suma += nota;
+						i++;
 					}
+					sumaMedii = sumaMedii + suma/i;
 				}
+
 				medieElev = sumaMedii / nrMaterii;
 				medie.setMedie(medieElev);
 				medii.add(medie);
@@ -106,7 +105,6 @@ public class ClasaRepositoryMock implements ClasaRepository {
 					int nrNote = noteElev.size();
 					int i = 0;
 					double suma = 0;
-					if(nrNote >= 0) {
 						while(i < nrNote) {
 							double nota = noteElev.get(i);
 							suma += nota;
@@ -115,7 +113,7 @@ public class ClasaRepositoryMock implements ClasaRepository {
 						double media = suma/i;
 						if (media >= 4.5)
 							corigent.setNrMaterii(corigent.getNrMaterii() + 1);
-					}
+
 				}
 				if(corigent.getNrMaterii() > 0) {
 					int i = 0;

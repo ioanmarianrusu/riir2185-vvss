@@ -3,6 +3,7 @@ package note.main;
 import note.controller.NoteController;
 import note.model.Corigent;
 import note.model.Medie;
+import note.model.Nota;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,6 +33,11 @@ public class StartApp {
 		ctrl.readElevi("C:\\Users\\ioanm\\Desktop\\proiect\\riir2185scsubbclujro\\src\\main\\java\\note\\utils\\elevi.txt");
 		ctrl.readNote("C:\\Users\\ioanm\\Desktop\\proiect\\riir2185scsubbclujro\\src\\main\\java\\note\\utils\\note.txt");
 		ctrl.creeazaClasa(ctrl.getElevi(), ctrl.getNote());
+
+		double nrmatricol;
+		String materie;
+		double nota;
+
 		boolean gasit = false;
 		while(!gasit) {
 			System.out.println("1. Adaugare Nota");
@@ -42,7 +48,16 @@ public class StartApp {
 		    try {
 				int option = Integer.parseInt(br.readLine());
 				switch(option) {
-				case 1: break;
+				case 1:
+						System.out.println("nrMatricol: ");
+						nrmatricol = Integer.parseInt(br.readLine());
+						System.out.println("materie: ");
+						materie = br.readLine();
+						System.out.println("Nota: ");
+						nota = Integer.parseInt(br.readLine());
+						Nota notaa= new Nota(nrmatricol,materie,nota);
+						ctrl.addNota(notaa);
+						break;
 				case 2: medii = ctrl.calculeazaMedii();
 						for(Medie medie:medii)
 							System.out.println(medie);

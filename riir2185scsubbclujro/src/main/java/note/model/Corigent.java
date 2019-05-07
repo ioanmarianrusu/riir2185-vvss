@@ -35,6 +35,8 @@ public class Corigent {
 		this.nrMaterii = nrMaterii;
 	}
 
+
+	@Override
 	public String toString() {
 		return numeElev + " -> " + nrMaterii;
 	}
